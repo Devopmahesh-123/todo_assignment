@@ -1,0 +1,21 @@
+{
+    "DB":{
+         "HOST":"127.0.0.1",
+         "PORT":"27017",
+         "USERNAME":"",
+         "PASSWORD":"",
+         "DATABASE":"Assignment",
+         "MONGOOSE":{
+          "useUnifiedTopology": true,
+          "useNewUrlParser": true,
+          "useFindAndModify": false,
+          "useCreateIndex": true,
+          "poolSize": 100,
+          "bufferMaxEntries": 0
+         },
+         "AUTH": false
+    },
+    "PORTS":{
+       "API_PORT":2035
+    }
+}
