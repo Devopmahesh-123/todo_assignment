@@ -12,11 +12,13 @@ const todoSchema = new mongoose.Schema({
         type:Date,
         required:true
     },
-    done:{
+    status:{
         type:Boolean,
         default: false
     }
-})
+},
+{timestamps: { currentTime: () => Date.now() }}
+)
 
 const Todo = mongoose.model("todo",todoSchema,"todo");
 export default Todo;
