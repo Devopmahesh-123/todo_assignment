@@ -69,7 +69,6 @@ export const deleteTodoController = async(req,res,next)=>{
 }
 
 export const getTodoController = async(req,res,next)=>{
-    console.log("<<<<req>>>",req.query)
    try {
     let { filter, limit, page, sort } = req.query;
 
@@ -91,16 +90,20 @@ export const getTodoController = async(req,res,next)=>{
     }
     console.log("filter>>>", filterCondition);
     const skip = (page - 1) * limit; // Calculate skip value for pagination
-
     const data = await Todo.find(filterCondition)
         .sort(sort) // Apply sorting
         .skip(skip) // Apply pagination
         .limit(limit); // Limit the number of documents returned
+
+    const totalCount = await Todo.countDocuments(filterCondition);    
     return res.json({
         status:constant.msgType.successStatus,
         code:constant.msgCode.successCode,
         message: constant.msg.datafetch,
-        data: data
+        data: {
+            docs:data,
+            count:totalCount
+        }
     })
    } catch (error) {
     console.log("error",error);
