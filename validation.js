@@ -6,9 +6,9 @@ const todoValidation = (req, res, next) => {
     name: Joi.string().required(),
     description: Joi.string(),
     dateTime: Joi.date().required(),
-    // status: Joi.boolean()
+    status: Joi.boolean()
   });
-  console.log("<<<<>>>>>",req.body) 
+ 
   const { error } = schema.validate(req.body);
 
   if (error) {

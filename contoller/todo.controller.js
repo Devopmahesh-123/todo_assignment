@@ -28,7 +28,6 @@ export const addTodoController = async(req,res,next)=>{
 }
 
 export const updateTodoController = async(req,res,next)=>{
-    console.log("id>>>",req.query,">>>",req.body);
    try {
     const _id = new mongoose.Types.ObjectId(req.query.id);
      const data = await Todo.findByIdAndUpdate(_id,req.body,{new:true});  
@@ -88,7 +87,6 @@ export const getTodoController = async(req,res,next)=>{
             filterCondition = { status: true };
         }
     }
-    console.log("filter>>>", filterCondition);
     const skip = (page - 1) * limit; // Calculate skip value for pagination
     const data = await Todo.find(filterCondition)
         .sort(sort) // Apply sorting
